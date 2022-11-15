@@ -18,10 +18,10 @@ jobs:
         run: echo ${{ secrets.ENV_BEDROCK }} >> .env 
           
       - name: Run composer create-project
-        run: docker-composer run composer create-project 
+        run: docker-compose run composer create-project 
         
       - name: Run docker compose 
-        run: docker-composer up -d 
+        run: docker-compose up -d 
       
           
       
