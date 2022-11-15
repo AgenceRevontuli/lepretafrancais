@@ -2,7 +2,7 @@ version: '3.6'
 services:
   nginx:
     image: nginx:latest
-    container_name: ${APP_NAME}-nginx
+    container_name: ${APP_NAME}_nginx
     ports:
       - '80:80'
       - '443:443'
@@ -19,7 +19,7 @@ services:
 
   mysql:
     image: mariadb:10.7
-    container_name: ${APP_NAME}-mysql
+    container_name: ${APP_NAME}_mysql
     command: --lower_case_table_names=2
     volumes:
        - './data/db:/var/lib/mysql:delegated'
@@ -34,7 +34,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ${APP_NAME}-wordpress
+    container_name: ${APP_NAME}_wordpress
     volumes:
       - ./src:/var/www/html:rw,cached
       - ./config/php.ini:/usr/local/etc/php/conf.d/php.ini
@@ -44,7 +44,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: ${APP_NAME}-phpmyadmin
+    container_name: ${APP_NAME}_phpmyadmin
     volumes:
       - ./config/phpmyadmin.ini:/usr/local/etc/php/conf.d/phpmyadmin.ini
     environment:
@@ -57,7 +57,7 @@ services:
       - mysql:mysql
 
   mailhog:
-    container_name: ${APP_NAME}-mailhog
+    container_name: ${APP_NAME}_mailhog
     image: mailhog/mailhog
     ports:
       - "8025:8025"
@@ -65,7 +65,7 @@ services:
 
   composer:
     image: composer
-    container_name: ${APP_NAME}-composer
+    container_name: ${APP_NAME}_composer
     working_dir: /var/www/html
     restart: 'no'
     volumes:
