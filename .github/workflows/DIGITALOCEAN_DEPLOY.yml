@@ -1,1 +1,27 @@
+name: DIGITALOCEAN_DEPLOY
 
+on: 
+  push: 
+    branches: [ main ]
+      
+jobs: 
+  build: 
+    runs-on: self-hosted
+      
+    steps: 
+      - uses: actions/checkout@main 
+      - name: Create .env on root server 
+        run: echo ${{ secrets.ENV_ROOT }} >> .env 
+        
+      - name: Create .env on bedrock root
+        working-directory: ./src
+        run: echo ${{ secrets.ENV_BEDROCK }} >> .env 
+          
+      - name: Run composer create-project
+        run: docker-composer run composer create-project 
+        
+      - name: Run docker compose 
+        run: docker-composer up -d 
+      
+          
+      
