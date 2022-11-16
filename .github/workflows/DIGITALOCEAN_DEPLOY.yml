@@ -53,9 +53,6 @@ jobs:
           echo SECURE_AUTH_SALT="f13aadba107180e7848ba0dacbe750208d0af29513d6f9413dc2282b61c50c1c" >> .env
           echo LOGGED_IN_SALT="59c9fd53cbce72698065147b13cdf692076f6003931718dc4b3574e2ca9a3be4" >> .env
           echo NONCE_SALT="1d4e765b5420ee8a45974de822a513a213d7aec87d0f270d4bc72844a50c7691" >> .env
-          
-      - name: Run composer create-project
-        run: docker-compose run composer create-project 
         
       - name: Run docker compose 
         run: docker-compose up -d 
