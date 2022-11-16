@@ -29,9 +29,6 @@ data
 # Node Package Manager
 node_modules
 
-# Certs
-certs/
-
 # Logs
 logs/
 
