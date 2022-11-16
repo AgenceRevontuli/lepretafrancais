@@ -66,6 +66,8 @@ services:
   composer:
     image: composer
     container_name: ${APP_NAME}composer
+    ports:
+      - '80:80'
     working_dir: /var/www/html
     restart: 'no'
     volumes:
