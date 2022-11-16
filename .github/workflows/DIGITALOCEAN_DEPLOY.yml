@@ -24,8 +24,8 @@ jobs:
       - uses: actions/checkout@main
       - name: Create .env on root server 
         run: | 
-          echo ${{ secrets.ENV_ROOT }} >> .env 
-          echo 'ce fichier doit fonctionner'
+          echo ${{ secrets.ENV_ROOT }} > .env 
+          echo 'ce fichier doit fonctionner' > .env
         
       - name: Create .env on bedrock root
         working-directory: ./src
