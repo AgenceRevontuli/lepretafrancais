@@ -24,8 +24,13 @@ jobs:
       - uses: actions/checkout@main
       - name: Create .env on root server 
         run: | 
-          echo 'ce fichier doit fonctionner' > .env
-          echo ${{ secrets.ENV_ROOT }} > .env 
+          echo IP=167.99.32.146 >> .env
+          echo APP_NAME=lepretafrancais >> .env
+          echo DOMAIN=167.99.32.146 >> .env
+          echo DB_HOST=mysql >> .env
+          echo DB_NAME=lepretafrancais >> .env
+          echo DB_ROOT_PASSWORD=password >> .env
+          echo DB_TABLE_PREFIX=wp_ >> .env
           
         
       - name: Create .env on bedrock root
