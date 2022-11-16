@@ -35,7 +35,24 @@ jobs:
         
       - name: Create .env on bedrock root
         working-directory: ./src
-        run: echo ${{ secrets.ENV_BEDROCK }} > .env 
+        run: | 
+          echo DB_NAME='lepretafrancais' >> .env
+          echo DB_USER='root' >> .env
+          echo DB_PASSWORD='password' >> .env
+          echo DB_HOST='mysql' >> .env
+          echo # DB_PREFIX='wp_' >> .env
+          echo WP_ENV='development' >> .env
+          echo WP_HOME='http://167.99.32.146/' >> .env
+          echo WP_SITEURL="${WP_HOME}/wp" >> .env
+          echo WP_DEBUG_LOG=/path/to/debug.log >> .env
+          echo AUTH_KEY="da97f7d3536bb83eff84a14ac9bf0578fa8ebd8610803b3440f5d26efa19fc01" >> .env
+          echo SECURE_AUTH_KEY="18ca392e20a8f77cbb2749930766632e547d4558951a4a110f9bcde1e2ad39fc" >> .env
+          echo LOGGED_IN_KEY="d7c071b3d0547ed48898eabce678dde361bc6eccebc35cd59562558f0c9478e6" >> .env
+          echo NONCE_KEY="ef45646087ca0b03a8049741c12c61a23d186553ddc66d789b2489200d89c7ec" >> .env
+          echo AUTH_SALT="4c80c29857d15603d3e27e3dea0cfe03c41414ceb1eeedcb92faea92f66f8312" >> .env
+          echo SECURE_AUTH_SALT="f13aadba107180e7848ba0dacbe750208d0af29513d6f9413dc2282b61c50c1c" >> .env
+          echo LOGGED_IN_SALT="59c9fd53cbce72698065147b13cdf692076f6003931718dc4b3574e2ca9a3be4" >> .env
+          echo NONCE_SALT="1d4e765b5420ee8a45974de822a513a213d7aec87d0f270d4bc72844a50c7691" >> .env
           
       - name: Run composer create-project
         run: docker-compose run composer create-project 
